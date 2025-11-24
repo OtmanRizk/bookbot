@@ -2,10 +2,13 @@ import sys
 from stats import get_num_words, get_num_characters, get_num_characters_counter ,get_num_characters_new
 from book import get_book_text
 
-def main():
-    print(sys.argv)
+def main(argv): 
+    print(argv)
+    if len(argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
     print("============ BOOKBOT ============")
-    path_to_file = sys.argv[1]
+    path_to_file = argv[1]
     print(f"Analyzing book found at {path_to_file}")
     text_book = get_book_text(path_to_file)
     num_words = get_num_words(text_book)
@@ -13,6 +16,7 @@ def main():
 
     #print(get_num_characters_counter(text_book))
     #print(get_num_characters(text_book))
+    
     print("----------- Word Count ----------")
     print(f"Found {num_words} total words")
     print("--------- Character Count -------")
@@ -23,5 +27,6 @@ def main():
 
 
 
+
     
-main()
+main(sys.argv)
